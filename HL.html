@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>HL Designs</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .box {
+            border: 1px solid black;
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Logo Page -->
+<h1 onclick="showOptions()">HL Designs</h1>
+
+<div id="options" class="hidden">
+    <button onclick="showLogin()">Login</button>
+    <button onclick="showRegister()">Register</button>
+</div>
+
+<!-- Login -->
+<div id="login" class="hidden">
+    <h3>Login</h3>
+    <input type="text" placeholder="Username"><br><br>
+    <input type="password" placeholder="Password"><br><br>
+    <button onclick="enterSite()">Enter</button>
+</div>
+
+<!-- Register -->
+<div id="register" class="hidden">
+    <h3>Register</h3>
+    <input type="text" placeholder="Username"><br><br>
+    <input type="password" placeholder="Password"><br><br>
+    <button onclick="enterSite()">Submit</button>
+</div>
+
+<!-- Catalog Page -->
+<div id="catalog" class="hidden">
+    <h2>Catalog</h2>
+
+    <div class="box" onclick="showDesigns('Shirts')">Shirt Designs</div>
+    <div class="box" onclick="showDesigns('Logos')">Logo Designs</div>
+    <div class="box" onclick="showDesigns('Cards')">Visiting Cards</div>
+</div>
+
+<!-- Designs Page -->
+<div id="designs" class="hidden">
+    <h2 id="designTitle"></h2>
+
+    <p>Design 1</p>
+    <p>Design 2</p>
+    <p>Design 3</p>
+
+    <button onclick="goBack()">Back</button>
+</div>
+
+<script>
+function showOptions() {
+    document.getElementById("options").classList.remove("hidden");
+}
+
+function showLogin() {
+    document.getElementById("login").classList.remove("hidden");
+    document.getElementById("register").classList.add("hidden");
+}
+
+function showRegister() {
+    document.getElementById("register").classList.remove("hidden");
+    document.getElementById("login").classList.add("hidden");
+}
+
+function enterSite() {
+    document.getElementById("login").classList.add("hidden");
+    document.getElementById("register").classList.add("hidden");
+    document.getElementById("catalog").classList.remove("hidden");
+}
+
+function showDesigns(type) {
+    document.getElementById("catalog").classList.add("hidden");
+    document.getElementById("designs").classList.remove("hidden");
+
+    document.getElementById("designTitle").innerText = type + " Designs";
+}
+
+function goBack() {
+    document.getElementById("designs").classList.add("hidden");
+    document.getElementById("catalog").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
